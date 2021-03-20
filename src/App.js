@@ -7,7 +7,6 @@ import Filter from './Components/Filter';
 const App = () => {
   return (
     <Container>
-      <h1>Phonebook</h1>
       <ContactForm />
       <Filter />
       <ContactList />

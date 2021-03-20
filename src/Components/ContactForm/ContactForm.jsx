@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ContactForm.module.css';
 import Button from '../Button';
-import { connect } from 'react-redux';
-import contactsActions from '../../redux/Contacts/contacts-actions';
+// import { connect } from 'react-redux';
+// import contactsActions from '../../redux/Contacts/contacts-actions';
 
 class ContactForm extends React.Component {
   state = {
@@ -42,6 +42,7 @@ class ContactForm extends React.Component {
     const { name, number } = this.state;
     return (
       <div>
+        <h1>Phonebook</h1>
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <label className={styles.label}>
             Name
@@ -81,13 +82,14 @@ ContactForm.propTypes = {
   ).isRequired,
 };
 
-const mapStateToProps = state => ({
-  contacts: state.contacts.items,
-});
+// const mapStateToProps = state => ({
+//   contacts: state.contacts.items,
+// });
 
-const mapDispatchToProps = dispatch => ({
-  addContact: (name, number) =>
-    dispatch(contactsActions.addContact(name, number)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   addContact: (name, number) =>
+//     dispatch(contactsActions.addContact(name, number)),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+// export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+export default ContactForm;

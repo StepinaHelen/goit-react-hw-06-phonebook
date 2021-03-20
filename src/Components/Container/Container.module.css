@@ -8,9 +8,10 @@ html {
   box-sizing: inherit;
 }
 .container {
-  max-width: 800px;
-  padding-left: 20px;
-  padding-right: 20px;
+  max-width: 560px;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+  padding: 30px;
   margin-right: auto;
   margin-left: auto;
   margin-top: 50px;

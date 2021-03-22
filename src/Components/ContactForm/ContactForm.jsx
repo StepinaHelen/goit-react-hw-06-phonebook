@@ -21,7 +21,7 @@ class ContactForm extends React.Component {
     event.preventDefault();
     const { contacts, addContact } = this.props;
     const { name, number } = this.state;
-    console.log(typeof number);
+
     if (!name || !number) {
       return toast('Please fill all fields in the correct format');
     }

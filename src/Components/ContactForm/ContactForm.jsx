@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ContactForm.module.css';
 import Button from '../Button';
+import { toast } from 'react-toastify';
+
 // import { connect } from 'react-redux';
 // import contactsActions from '../../redux/Contacts/contacts-actions';
 
@@ -19,13 +21,17 @@ class ContactForm extends React.Component {
     event.preventDefault();
     const { contacts, addContact } = this.props;
     const { name, number } = this.state;
-
+    console.log(typeof number);
+    if (!name || !number) {
+      return toast('Please fill all fields in the correct format');
+    }
     const findName = contacts.find(findContact => {
       return findContact.name === name;
     });
 
     if (findName) {
-      alert(`${name} is already in the contacts`);
+      toast(`${name} is already in the contacts`);
+      // alert(`${name} is already in the contacts`);
       this.reset();
     } else {
       addContact(name, number);
@@ -34,7 +40,7 @@ class ContactForm extends React.Component {
   };
   reset = () => {
     this.setState({
-      name: ' ',
+      name: '',
       number: '',
     });
   };
@@ -59,7 +65,7 @@ class ContactForm extends React.Component {
             <input
               className={styles.input}
               name="number"
-              type="text"
+              type="number"
               value={number}
               onChange={this.handleInputChange}
             />

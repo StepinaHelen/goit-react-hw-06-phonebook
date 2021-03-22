@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import styles from './ContactForm.module.css';
 import Button from '../Button';
 import { toast } from 'react-toastify';
@@ -22,15 +22,14 @@ class ContactForm extends React.Component {
     const { contacts, addContact } = this.props;
     const { name, number } = this.state;
     // с помощью expression
-    // let expression = /^\d+/;
-    //  if (!name || !number || expression.test(number) === false)
-    // {
-    //   return toast('Please fill all fields in the correct format');
-    // }
-
-    if (!name || !number) {
+    let expression = /^\d+/;
+    if (!name || !number || expression.test(number) === false) {
       return toast('Please fill all fields in the correct format');
     }
+
+    // if (!name || !number) {
+    //   return toast('Please fill all fields in the correct format');
+    // }
     const findName = contacts.find(findContact => {
       return findContact.name === name;
     });
@@ -71,7 +70,7 @@ class ContactForm extends React.Component {
             <input
               className={styles.input}
               name="number"
-              type="number"
+              type="tel"
               value={number}
               onChange={this.handleInputChange}
             />
@@ -82,17 +81,6 @@ class ContactForm extends React.Component {
     );
   }
 }
-
-ContactForm.propTypes = {
-  addContact: PropTypes.func.isRequired,
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-};
 
 // const mapStateToProps = state => ({
 //   contacts: state.contacts.items,
